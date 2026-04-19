@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Dancing Script", "Brush Script MT", cursive;
+  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --gold: #C9A96E;
+  --gold2: #E8D5B0;
+  --rose: #E8A0BF;
+  --deep: #1a0a1e;
+  --cream: #FFF8F0;
+  --dark: #0d0612;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+/* ── Confetti ── */
+.confetti-piece {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ── Hearts ── */
+@keyframes rise-heart {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(-600px) rotate(20deg); opacity: 0; }
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  animation: rise-heart linear infinite;
+  opacity: 0;
+}
+
+/* ── Smoke ── */
+@keyframes smoke-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-60px) scale(3); opacity: 0; }
+}
+
+.smoke-particle {
+  border-radius: 50%;
+  pointer-events: none;
+  animation: smoke-rise ease-out forwards;
+}
+
+/* ── Timer num animation ── */
+@keyframes tick-scale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.tick-animate {
+  animation: tick-scale 0.2s ease-out;
+}
+
+/* ── Blink separator ── */
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Bow animations ── */
+@keyframes bow-float-l {
+  0%, 100% { transform: rotate(-20deg) translateY(0); }
+  50% { transform: rotate(-20deg) translateY(-3px); }
+}
+@keyframes bow-float-r {
+  0%, 100% { transform: rotate(20deg) translateY(0); }
+  50% { transform: rotate(20deg) translateY(-3px); }
+}
+
+/* ── Write in ── */
+@keyframes write-in {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+/* ── Stars ── */
+#stars-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Scrollbar hide ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 2px; }
